@@ -872,7 +872,7 @@
 
 <script>
   var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
+  var guest = '昵称,邮箱,网址(https://)';
   guest = guest.split(',').filter(function(item) {
     return GUEST.indexOf(item) > -1;
   });
@@ -882,7 +882,7 @@
     notify: false,
     appId: 'SlVrtN5J60nFjYYxSdttu33v-gzGzoHsz',
     appKey: 'SqJ4JBB7IYWNewwtMvrtL8ly',
-    placeholder: 'Just go go',
+    placeholder: '欢迎发表看法呀',
     avatar: 'mm',
     meta: guest,
     pageSize: '10' || 10,

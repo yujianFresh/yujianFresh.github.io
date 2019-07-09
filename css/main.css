@@ -1760,7 +1760,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #885bc9;
+  background: #edaf91;
 }
 .feed-link,
 .chat {
@@ -2468,4 +2468,10 @@ embed {
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
+}
+body {
+  backgroud: url("http://pudbmgrl8.bkt.clouddn.com/kwahi-01.jpeg");
+  backgroud-repeat: no-repeat;
+  backgroud-attachment: fixed;
+  backgroud-position: 50% 50%;
 }

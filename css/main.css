@@ -1760,7 +1760,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #edaf91;
+  background: #74d9ff;
 }
 .feed-link,
 .chat {
@@ -1947,10 +1947,13 @@ pre .javascript .function {
 .footer-inner {
   text-align: center;
 }
+#animate {
+  animation: iconAnimate 1.33s ease-in-out infinite;
+}
 .with-love {
   display: inline-block;
   margin: 0 5px;
-  color: #808080;
+  color: #ff0000;
 }
 .powered-by,
 .theme-info {
@@ -2468,10 +2471,4 @@ embed {
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
-}
-body {
-  backgroud: url("http://pudbmgrl8.bkt.clouddn.com/kwahi-01.jpeg");
-  backgroud-repeat: no-repeat;
-  backgroud-attachment: fixed;
-  backgroud-position: 50% 50%;
 }

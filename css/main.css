@@ -1101,7 +1101,7 @@ pre .javascript .function {
   position: relative;
   display: inline-block;
   padding: 0 40px;
-  color: #fffaf0 !important;
+  color: #fffaf0;
   background: #222;
   border-bottom: none;
 }
@@ -1760,7 +1760,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #9a4aff;
+  background: #21ffb5;
 }
 .feed-link,
 .chat {

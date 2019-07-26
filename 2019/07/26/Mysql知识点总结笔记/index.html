@@ -96,20 +96,18 @@
 
 
 
-  <meta name="description" content="zk分布式锁实现原理流程图如下:">
-<meta name="keywords" content="zookeeper,分布式锁">
+  <meta name="description" content="知识列表 mysql的隔离级别有哪几种?分别有什么优缺点  123456789101112mysql共有四种事务隔离级别，分别是未提交读(READ UNCOMMITTED)、已提交读(READ COMMITTED)、可重复读(REPEATABLE READ)、可串行化(SERIALIZABLE),mysql的默认事务隔离级别是可重复读。未提交读:	一个事务中做的内容修改,即使没有进行事务提交,对其">
+<meta name="keywords" content="Mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="zk分布式锁实现原理">
-<meta property="og:url" content="http://yoursite.com/2019/07/08/zk分布式锁实现原理/index.html">
+<meta property="og:title" content="Mysql知识点总结笔记">
+<meta property="og:url" content="http://yoursite.com/2019/07/26/Mysql知识点总结笔记/index.html">
 <meta property="og:site_name" content="timfish&#39;s Blog">
-<meta property="og:description" content="zk分布式锁实现原理流程图如下:">
+<meta property="og:description" content="知识列表 mysql的隔离级别有哪几种?分别有什么优缺点  123456789101112mysql共有四种事务隔离级别，分别是未提交读(READ UNCOMMITTED)、已提交读(READ COMMITTED)、可重复读(REPEATABLE READ)、可串行化(SERIALIZABLE),mysql的默认事务隔离级别是可重复读。未提交读:	一个事务中做的内容修改,即使没有进行事务提交,对其">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pudbmgrl8.bkt.clouddn.com/zk-dispatcher-lock.png">
-<meta property="og:updated_time" content="2019-07-09T09:32:19.723Z">
+<meta property="og:updated_time" content="2019-07-26T03:29:12.404Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zk分布式锁实现原理">
-<meta name="twitter:description" content="zk分布式锁实现原理流程图如下:">
-<meta name="twitter:image" content="http://pudbmgrl8.bkt.clouddn.com/zk-dispatcher-lock.png">
+<meta name="twitter:title" content="Mysql知识点总结笔记">
+<meta name="twitter:description" content="知识列表 mysql的隔离级别有哪几种?分别有什么优缺点  123456789101112mysql共有四种事务隔离级别，分别是未提交读(READ UNCOMMITTED)、已提交读(READ COMMITTED)、可重复读(REPEATABLE READ)、可串行化(SERIALIZABLE),mysql的默认事务隔离级别是可重复读。未提交读:	一个事务中做的内容修改,即使没有进行事务提交,对其">
 
 
 
@@ -117,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/08/zk分布式锁实现原理/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/26/Mysql知识点总结笔记/">
 
 
 
@@ -127,7 +125,7 @@
   };
 </script>
 
-  <title>zk分布式锁实现原理 | timfish's Blog</title>
+  <title>Mysql知识点总结笔记 | timfish's Blog</title>
   
 
 
@@ -376,7 +374,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/08/zk分布式锁实现原理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/26/Mysql知识点总结笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="timfish">
@@ -393,7 +391,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">zk分布式锁实现原理
+          <h1 class="post-title" itemprop="name headline">Mysql知识点总结笔记
 
               
             
@@ -419,24 +417,12 @@
                 
               
 
-              <time title="创建时间：2019-07-08 17:38:00" itemprop="dateCreated datePublished" datetime="2019-07-08T17:38:00+08:00">2019-07-08</time>
+              <time title="创建时间：2019-07-26 11:26:52 / 修改时间：11:29:12" itemprop="dateCreated datePublished" datetime="2019-07-26T11:26:52+08:00">2019-07-26</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-09 17:32:19" itemprop="dateModified" datetime="2019-07-09T17:32:19+08:00">2019-07-09</time>
               
             
           </span>
@@ -453,7 +439,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
 
                 
                 
@@ -486,7 +472,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">228</span>
+                <span title="本文字数">5.8k</span>
               
 
               
@@ -500,7 +486,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">5 分钟</span>
               
             </div>
           
@@ -520,8 +506,37 @@
       
 
       
-        <h3 id="zk分布式锁实现原理流程图如下"><a href="#zk分布式锁实现原理流程图如下" class="headerlink" title="zk分布式锁实现原理流程图如下:"></a>zk分布式锁实现原理流程图如下:</h3><a id="more"></a>
-<p><img src="http://pudbmgrl8.bkt.clouddn.com/zk-dispatcher-lock.png" alt="zk-lock"></p>
+        <h3 id="知识列表"><a href="#知识列表" class="headerlink" title="知识列表"></a>知识列表</h3><ul>
+<li><p>mysql的隔离级别有哪几种?分别有什么优缺点</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql共有四种事务隔离级别，分别是未提交读(READ UNCOMMITTED)、已提交读(READ COMMITTED)、可重复读(REPEATABLE READ)、可串行化(SERIALIZABLE),mysql的默认事务隔离级别是可重复读。</span><br><span class="line"></span><br><span class="line">未提交读:</span><br><span class="line">	一个事务中做的内容修改,即使没有进行事务提交,对其他事务也是可见的。这个级别会造成脏读，不可重复读,幻读。</span><br><span class="line">已提交读:</span><br><span class="line">	一个事务开始时，只能&quot;看到&quot;在事务开始之前的已经提交的事务所做的修改。也就是说，在这个隔离级别下，一个事务从开始到结束之间所做的修改，对其他事务是不可见的。这个级别会造成不可重复读，幻读。</span><br><span class="line">可重复读:</span><br><span class="line">	可重复读，在已提交读的前提下，保证了同一个事务多次读取同样的记录结果是一致的。</span><br><span class="line">可串行化:</span><br><span class="line">	可串行化是最高的隔离级别,它通过强制事务串行执行，避免了脏读，不可重复读，幻读的发生。实现原理就是在读取的每一行数据上进行加锁，这也就意味着会导致大量的超时和锁竞争问题。</span><br><span class="line">	</span><br><span class="line">四种隔离级别的安全性是从低 --&gt; 高的，相反的是并发性从 高 --&gt; 低。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li><p>什么是脏读、不可重复读、幻读</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">脏读:</span><br><span class="line">	一个事务能够&quot;看到&quot;到其他未提交事务的所做的修改，即称为脏读。</span><br><span class="line">不可重复读:</span><br><span class="line">	一个事务读取了某条记录后，另一个事务对该记录进行了修改，则当第一个事务再次读取该条记录，将会发现两次读取的结果不一致，即称为不可重复读。</span><br><span class="line">幻读:</span><br><span class="line">	所谓幻读，是指一个事务在读取某个范围的数据时，另外一个事务又在该范围之间插入了新的记录(或删除了几条记录)，这将导致之前的事务再次读取该范围的记录时，会多出一些记录(或少了一些记录)。即称为幻读。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MVCC的实现原理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">MVCC，即多版本并发控制,是行级锁的一个变种。</span><br><span class="line">简单来说,MVCC的实现是通过保存数据在某个时间点的快照来实现的，也就是不管一个事务执行多长的时间，每个事务看到的数据是一致的。根据每个事务开始的时间不同，每个事务对同一张表，同一个时刻看到的数据是不一样的。</span><br><span class="line"></span><br><span class="line">InnoDB的MVCC实现，是通过在每个行记录增加两个隐藏的列来实现的，这两个列，一个保存了该行的创建时间，一个保存了该行的过期时间(即删除时间)，存储的值是事务Id而不是时间，事务Id在InnoDB里是全局自增的，每当开始一个新的事务，事务Id都会加1。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">当 InnoDB 执行 SELECT 时:</span><br><span class="line">	a. InnoDB 只会查询版本号&lt;= 当前事务Id的数据行,这样可以确保事务读取的行，要么是事务开始之前就已经存在的，要么是事务本身进行的插入或修改。</span><br><span class="line">	b. 行的删除版本号要么是未定义,要么是大于当前事务Id，这可以确保事务读取的行，在事务开始之前是未被删除的。</span><br><span class="line">	只有满足上述两个条件，才能作为查询结果进行返回。</span><br><span class="line">当 InnoDB 执行 INSERT 时:</span><br><span class="line">	InnoDB为新插入的每一行保存当前事务Id作为行的版本号。</span><br><span class="line">当 InnoDB 执行 UPDATE 时:</span><br><span class="line">	InnoDB会插入一条新的记录,并保证当前事务Id作为行的版本号,同时在原来行的过期列保存当前事务Id当作版本号，作为删除标识。</span><br><span class="line">当 InnoDB 执行 DELETE 时:</span><br><span class="line">	InnoDB为删除的每一行保存当前事务Id作为行的删除标识。</span><br><span class="line"> </span><br><span class="line">注: InnoDB的MVCC只在已提交读，不可重复读两个隔离级别下工作。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如何保证没有幻读发生的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在当前读的前提下(当前读是指加锁的 select,update,delete语句),可以通过next-key locks 算法来消除幻读的发生。</span><br><span class="line">	即锁住索引记录之间的范围,避免范围内插入记录,从而防止幻影行记录。</span><br><span class="line">	</span><br><span class="line">在普通读的前提下,可以通过MVCC来解决幻读。</span><br><span class="line">	因为MVCC的读取需要同时满足行创建版本号&lt;=当前事务Id，同时行过期版本号不存在或大于当前事务Id。这样的话即使其他事务在同样的范围内有新的记录插入,也不会被该事务查询到。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>聚簇索引和非聚簇索引的区别</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">聚簇索引即主键索引,索引树的叶子节点保存了完整的数据行。</span><br><span class="line">非聚簇索引则是指除了主键索引外的其他索引，即普通索引和唯一索引，索引树的叶子节点保存的是主键索引的值。</span><br><span class="line"></span><br><span class="line">所以一般而言，主键索引最好是自增并且是整数型的，这既可以减少非聚簇索引树的存储数据量，又防止了分页的发生。</span><br><span class="line"></span><br><span class="line">查询效率最高的当然是聚簇索引，因为普通索引查询的话一般会涉及到回表，即两次索引树的查询，而聚簇索引只需要一次索引树查询。除非所有查询的字段都在普通索引树上，这种查询效率也很好,也称为覆盖索引,在explain中表现为Extra字段中显示 Using index。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MyISAM和InnoDB引擎的区别及各自的优缺点</p>
+</li>
+<li><p>常见的sql优化都有哪些点可以参考</p>
+</li>
+<li><p>如何进行大表的分页查询优化</p>
+</li>
+<li><p>一条查询sql的执行过程</p>
+</li>
+</ul>
 
       
     </div>
@@ -545,9 +560,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/zookeeper/" rel="tag"># zookeeper</a>
-          
-            <a href="/tags/分布式锁/" rel="tag"># 分布式锁</a>
+            <a href="/tags/Mysql/" rel="tag"># Mysql</a>
           
         </div>
       
@@ -560,8 +573,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/05/hexo搭建教程/" rel="next" title="hexo开源博客搭建教程">
-                <i class="fa fa-chevron-left"></i> hexo开源博客搭建教程
+              <a href="/2019/07/19/链表面试题/" rel="next" title="链表高频面试题汇总">
+                <i class="fa fa-chevron-left"></i> 链表高频面试题汇总
               </a>
             
           </div>
@@ -569,10 +582,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/10/2019我的读书清单/" rel="prev" title="2019我的读书清单">
-                2019我的读书清单 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -745,7 +754,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#zk分布式锁实现原理流程图如下"><span class="nav-number">1.</span> <span class="nav-text">zk分布式锁实现原理流程图如下:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识列表"><span class="nav-number">1.</span> <span class="nav-text">知识列表</span></a></li></ol></div>
             
 
           </div>

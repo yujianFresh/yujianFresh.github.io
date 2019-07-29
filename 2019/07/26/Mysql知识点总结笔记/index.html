@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="知识列表 mysql的隔离级别有哪几种?分别有什么优缺点  123456789101112mysql共有四种事务隔离级别，分别是未提交读(READ UNCOMMITTED)、已提交读(READ COMMITTED)、可重复读(REPEATABLE READ)、可串行化(SERIALIZABLE),mysql的默认事务隔离级别是可重复读。未提交读:	一个事务中做的内容修改,即使没有进行事务提交,对其">
+  <meta name="description" content="知识列表 mysql的隔离级别有哪几种 什么是脏读、不可重复读、幻读 MVCC的实现原理 如何保证没有幻读发生的 聚簇索引和非聚簇索引的区别 MyISAM和InnoDB引擎的区别及各自的优缺点 常见的sql优化都有哪些点可以参考 如何进行大表的分页查询优化 一条查询sql的执行过程">
 <meta name="keywords" content="Mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql知识点总结笔记">
 <meta property="og:url" content="http://yoursite.com/2019/07/26/Mysql知识点总结笔记/index.html">
 <meta property="og:site_name" content="timfish&#39;s Blog">
-<meta property="og:description" content="知识列表 mysql的隔离级别有哪几种?分别有什么优缺点  123456789101112mysql共有四种事务隔离级别，分别是未提交读(READ UNCOMMITTED)、已提交读(READ COMMITTED)、可重复读(REPEATABLE READ)、可串行化(SERIALIZABLE),mysql的默认事务隔离级别是可重复读。未提交读:	一个事务中做的内容修改,即使没有进行事务提交,对其">
+<meta property="og:description" content="知识列表 mysql的隔离级别有哪几种 什么是脏读、不可重复读、幻读 MVCC的实现原理 如何保证没有幻读发生的 聚簇索引和非聚簇索引的区别 MyISAM和InnoDB引擎的区别及各自的优缺点 常见的sql优化都有哪些点可以参考 如何进行大表的分页查询优化 一条查询sql的执行过程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-26T03:29:12.404Z">
+<meta property="og:updated_time" content="2019-07-29T05:54:48.646Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql知识点总结笔记">
-<meta name="twitter:description" content="知识列表 mysql的隔离级别有哪几种?分别有什么优缺点  123456789101112mysql共有四种事务隔离级别，分别是未提交读(READ UNCOMMITTED)、已提交读(READ COMMITTED)、可重复读(REPEATABLE READ)、可串行化(SERIALIZABLE),mysql的默认事务隔离级别是可重复读。未提交读:	一个事务中做的内容修改,即使没有进行事务提交,对其">
+<meta name="twitter:description" content="知识列表 mysql的隔离级别有哪几种 什么是脏读、不可重复读、幻读 MVCC的实现原理 如何保证没有幻读发生的 聚簇索引和非聚簇索引的区别 MyISAM和InnoDB引擎的区别及各自的优缺点 常见的sql优化都有哪些点可以参考 如何进行大表的分页查询优化 一条查询sql的执行过程">
 
 
 
@@ -417,12 +417,24 @@
                 
               
 
-              <time title="创建时间：2019-07-26 11:26:52 / 修改时间：11:29:12" itemprop="dateCreated datePublished" datetime="2019-07-26T11:26:52+08:00">2019-07-26</time>
+              <time title="创建时间：2019-07-26 11:26:52" itemprop="dateCreated datePublished" datetime="2019-07-26T11:26:52+08:00">2019-07-26</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-29 13:54:48" itemprop="dateModified" datetime="2019-07-29T13:54:48+08:00">2019-07-29</time>
               
             
           </span>
@@ -472,7 +484,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.8k</span>
+                <span title="本文字数">10k</span>
               
 
               
@@ -486,7 +498,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">5 分钟</span>
+                <span title="阅读时长">9 分钟</span>
               
             </div>
           
@@ -506,36 +518,57 @@
       
 
       
-        <h3 id="知识列表"><a href="#知识列表" class="headerlink" title="知识列表"></a>知识列表</h3><ul>
-<li><p>mysql的隔离级别有哪几种?分别有什么优缺点</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql共有四种事务隔离级别，分别是未提交读(READ UNCOMMITTED)、已提交读(READ COMMITTED)、可重复读(REPEATABLE READ)、可串行化(SERIALIZABLE),mysql的默认事务隔离级别是可重复读。</span><br><span class="line"></span><br><span class="line">未提交读:</span><br><span class="line">	一个事务中做的内容修改,即使没有进行事务提交,对其他事务也是可见的。这个级别会造成脏读，不可重复读,幻读。</span><br><span class="line">已提交读:</span><br><span class="line">	一个事务开始时，只能&quot;看到&quot;在事务开始之前的已经提交的事务所做的修改。也就是说，在这个隔离级别下，一个事务从开始到结束之间所做的修改，对其他事务是不可见的。这个级别会造成不可重复读，幻读。</span><br><span class="line">可重复读:</span><br><span class="line">	可重复读，在已提交读的前提下，保证了同一个事务多次读取同样的记录结果是一致的。</span><br><span class="line">可串行化:</span><br><span class="line">	可串行化是最高的隔离级别,它通过强制事务串行执行，避免了脏读，不可重复读，幻读的发生。实现原理就是在读取的每一行数据上进行加锁，这也就意味着会导致大量的超时和锁竞争问题。</span><br><span class="line">	</span><br><span class="line">四种隔离级别的安全性是从低 --&gt; 高的，相反的是并发性从 高 --&gt; 低。</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
+        <h3 id="知识列表"><a href="#知识列表" class="headerlink" title="知识列表"></a>知识列表</h3><ol>
+<li><a href="#2">mysql的隔离级别有哪几种</a></li>
+<li><a href="#2">什么是脏读、不可重复读、幻读</a></li>
+<li><a href="#3">MVCC的实现原理</a></li>
+<li><a href="#4">如何保证没有幻读发生的</a></li>
+<li><a href="#5">聚簇索引和非聚簇索引的区别</a></li>
+<li><a href="#6">MyISAM和InnoDB引擎的区别及各自的优缺点</a></li>
+<li><a href="#7">常见的sql优化都有哪些点可以参考</a></li>
+<li><a href="#8">如何进行大表的分页查询优化</a></li>
+<li><a href="#9">一条查询sql的执行过程</a></li>
+</ol>
 <a id="more"></a>
 
 <ul>
-<li><p>什么是脏读、不可重复读、幻读</p>
+<li><h6 id="1">mysql的隔离级别有哪几种?分别有什么优缺点    
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql共有四种事务隔离级别，分别是未提交读(READ UNCOMMITTED)、已提交读(READ COMMITTED)、可重复读(REPEATABLE READ)、可串行化(SERIALIZABLE),mysql的默认事务隔离级别是可重复读。</span><br><span class="line"></span><br><span class="line">未提交读:</span><br><span class="line">	一个事务中做的内容修改,即使没有进行事务提交,对其他事务也是可见的。这个级别会造成脏读，不可重复读,幻读。</span><br><span class="line">已提交读:</span><br><span class="line">	一个事务开始时，只能&quot;看到&quot;在事务开始之前的已经提交的事务所做的修改。也就是说，在这个隔离级别下，一个事务从开始到结束之间所做的修改，对其他事务是不可见的。这个级别会造成不可重复读，幻读。</span><br><span class="line">可重复读:</span><br><span class="line">	可重复读，在已提交读的前提下，保证了同一个事务多次读取同样的记录结果是一致的。</span><br><span class="line">可串行化:</span><br><span class="line">	可串行化是最高的隔离级别,它通过强制事务串行执行，避免了脏读，不可重复读，幻读的发生。实现原理就是在读取的每一行数据上进行加锁，这也就意味着会导致大量的超时和锁竞争问题。</span><br><span class="line">	</span><br><span class="line">四种隔离级别的安全性是从低 --&gt; 高的，相反的是并发性从 高 --&gt; 低。</span><br></pre></td></tr></table></figure>
+</h6></li>
+<li><h6 id="2">什么是脏读、不可重复读、幻读</h6>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">脏读:</span><br><span class="line">	一个事务能够&quot;看到&quot;到其他未提交事务的所做的修改，即称为脏读。</span><br><span class="line">不可重复读:</span><br><span class="line">	一个事务读取了某条记录后，另一个事务对该记录进行了修改，则当第一个事务再次读取该条记录，将会发现两次读取的结果不一致，即称为不可重复读。</span><br><span class="line">幻读:</span><br><span class="line">	所谓幻读，是指一个事务在读取某个范围的数据时，另外一个事务又在该范围之间插入了新的记录(或删除了几条记录)，这将导致之前的事务再次读取该范围的记录时，会多出一些记录(或少了一些记录)。即称为幻读。</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>MVCC的实现原理</p>
+<li><h6 id="3">MVCC的实现原理</h6>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">MVCC，即多版本并发控制,是行级锁的一个变种。</span><br><span class="line">简单来说,MVCC的实现是通过保存数据在某个时间点的快照来实现的，也就是不管一个事务执行多长的时间，每个事务看到的数据是一致的。根据每个事务开始的时间不同，每个事务对同一张表，同一个时刻看到的数据是不一样的。</span><br><span class="line"></span><br><span class="line">InnoDB的MVCC实现，是通过在每个行记录增加两个隐藏的列来实现的，这两个列，一个保存了该行的创建时间，一个保存了该行的过期时间(即删除时间)，存储的值是事务Id而不是时间，事务Id在InnoDB里是全局自增的，每当开始一个新的事务，事务Id都会加1。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">当 InnoDB 执行 SELECT 时:</span><br><span class="line">	a. InnoDB 只会查询版本号&lt;= 当前事务Id的数据行,这样可以确保事务读取的行，要么是事务开始之前就已经存在的，要么是事务本身进行的插入或修改。</span><br><span class="line">	b. 行的删除版本号要么是未定义,要么是大于当前事务Id，这可以确保事务读取的行，在事务开始之前是未被删除的。</span><br><span class="line">	只有满足上述两个条件，才能作为查询结果进行返回。</span><br><span class="line">当 InnoDB 执行 INSERT 时:</span><br><span class="line">	InnoDB为新插入的每一行保存当前事务Id作为行的版本号。</span><br><span class="line">当 InnoDB 执行 UPDATE 时:</span><br><span class="line">	InnoDB会插入一条新的记录,并保证当前事务Id作为行的版本号,同时在原来行的过期列保存当前事务Id当作版本号，作为删除标识。</span><br><span class="line">当 InnoDB 执行 DELETE 时:</span><br><span class="line">	InnoDB为删除的每一行保存当前事务Id作为行的删除标识。</span><br><span class="line"> </span><br><span class="line">注: InnoDB的MVCC只在已提交读，不可重复读两个隔离级别下工作。</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>如何保证没有幻读发生的</p>
+<li><h6 id="4">如何保证没有幻读发生的</h6>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在当前读的前提下(当前读是指加锁的 select,update,delete语句),可以通过next-key locks 算法来消除幻读的发生。</span><br><span class="line">	即锁住索引记录之间的范围,避免范围内插入记录,从而防止幻影行记录。</span><br><span class="line">	</span><br><span class="line">在普通读的前提下,可以通过MVCC来解决幻读。</span><br><span class="line">	因为MVCC的读取需要同时满足行创建版本号&lt;=当前事务Id，同时行过期版本号不存在或大于当前事务Id。这样的话即使其他事务在同样的范围内有新的记录插入,也不会被该事务查询到。</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>聚簇索引和非聚簇索引的区别</p>
+<li><h6 id="5">聚簇索引和非聚簇索引的区别</h6>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">聚簇索引即主键索引,索引树的叶子节点保存了完整的数据行。</span><br><span class="line">非聚簇索引则是指除了主键索引外的其他索引，即普通索引和唯一索引，索引树的叶子节点保存的是主键索引的值。</span><br><span class="line"></span><br><span class="line">所以一般而言，主键索引最好是自增并且是整数型的，这既可以减少非聚簇索引树的存储数据量，又防止了分页的发生。</span><br><span class="line"></span><br><span class="line">查询效率最高的当然是聚簇索引，因为普通索引查询的话一般会涉及到回表，即两次索引树的查询，而聚簇索引只需要一次索引树查询。除非所有查询的字段都在普通索引树上，这种查询效率也很好,也称为覆盖索引,在explain中表现为Extra字段中显示 Using index。</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>MyISAM和InnoDB引擎的区别及各自的优缺点</p>
+<li><h6 id="6">MyISAM和InnoDB引擎的区别及各自的优缺点</h6>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. InnoDB支持事务,MyISAM不支持事务</span><br><span class="line">2. InnoDB数据存储在共享表空间,MyISAM数据存储在文件中</span><br><span class="line">3. InnoDB支持行级锁,MyISAM只支持表锁</span><br><span class="line">4. InnoDB支持崩溃后恢复,MyISAM不支持</span><br><span class="line">5. InnoDB支持外键,MyISAM不支持</span><br><span class="line">6. InnoDB不支持全文索引, MyISAM支持</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>常见的sql优化都有哪些点可以参考</p>
+<li><h6 id="7">常见的sql优化都有哪些点可以参考</h6>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.能走主键索引的尽量走主键索引</span><br><span class="line">2.能走覆盖索引的走覆盖索引</span><br><span class="line">3.复杂SQL最好优化成多个小SQL,这样查询缓存能充分利用</span><br><span class="line">4.可以通过前缀索引来减少索引的大小,如email字段,可以用email(n)来做前缀索引,具体n是多少，可以用count(email(n)) / count(email)这个值来比较选择度大小,如果增大n，选择度不再提高,此时n为合适的值</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>如何进行大表的分页查询优化</p>
+<li><h6 id="8">如何进行大表的分页查询优化</h6>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1. 页面中限制分页的数量</span><br><span class="line">	 如果一张表的数据量在上百万，但是查询的数据基本是最新的那些，那么就可以限制页面的翻页最多是100页，京东商品的分页目前就是这样实现的。	</span><br><span class="line">	 </span><br><span class="line">2. 优化大偏移量的性能</span><br><span class="line">	 分页查询基本是OFFSET的问题，导致MySQL扫描大量不需要的行然后再抛弃。如果可以记录上次取数据的位置，就可以避免OFFSET。</span><br><span class="line">	 在实现上就是只能点击上一页或者下一页,这样的话就能根据当前页的数据优化分页查询SQL。</span><br><span class="line">   如 SELECT * FROM rental ORDER BY rental_id DESC LIMIT 20;</span><br><span class="line">   假设查询返回的主键为16049到16030，那么下一页的查询就可以从16030这个点开始:</span><br><span class="line">   SELECT * FROM rental WHERE rental_id &lt; 16030 ORDER BY rental_id DESC LIMIT 20;</span><br><span class="line">	</span><br><span class="line">3. 优化大表LIMIT查询SQL,使用索引覆盖扫描</span><br><span class="line">	 	如 SELECT * FROM user ORDER BY id DESC LIMIT 100000,10;</span><br><span class="line">	  在 user表的数据库量达到百万之后(id为主键)</span><br><span class="line">	  优化成: SELECT u.* FROM user u INNER JOIN 	(SELECT id from user ORDER BY id DESC LIMIT 100000,10) AS uer USING(id);</span><br><span class="line">	  性能能提升3倍左右</span><br><span class="line">4. 表分区</span><br><span class="line">	如果大表查询的数据基本都是最新的,则可以在表分成几个区,如100万一个分区,那么查询的时候就可以只扫描一个分区的数据。具体的执行计划，扫描了几个分区可以用 EXPLAIN PARTITIONS 查看</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>一条查询sql的执行过程</p>
+<li><h6 id="9">一条查询sql的执行过程</h6>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 客户端发送一条查询给服务器</span><br><span class="line">2. 服务器先检查查询缓存，如果命中率缓存，则立刻返回存储在缓存中的结果。否则进入下一阶段</span><br><span class="line">3. 服务器端对SQL进行解析,预处理,在优化器生成对应的执行计划</span><br><span class="line">4. mysql根据优化器生成的执行计划，调用存储引擎的API来执行查询</span><br><span class="line">5. 将结果返回给客户端</span><br></pre></td></tr></table></figure>
 </li>
+<li></li>
 </ul>
 
       
@@ -754,7 +787,10 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识列表"><span class="nav-number">1.</span> <span class="nav-text">知识列表</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识列表"><span class="nav-number">1.</span> <span class="nav-text">知识列表</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">mysql的隔离级别有哪几种?分别有什么优缺点    
+
+123456789101112mysql共有四种事务隔离级别，分别是未提交读(READ UNCOMMITTED)、已提交读(READ COMMITTED)、可重复读(REPEATABLE READ)、可串行化(SERIALIZABLE),mysql的默认事务隔离级别是可重复读。未提交读:	一个事务中做的内容修改,即使没有进行事务提交,对其他事务也是可见的。这个级别会造成脏读，不可重复读,幻读。已提交读:	一个事务开始时，只能&quot;看到&quot;在事务开始之前的已经提交的事务所做的修改。也就是说，在这个隔离级别下，一个事务从开始到结束之间所做的修改，对其他事务是不可见的。这个级别会造成不可重复读，幻读。可重复读:	可重复读，在已提交读的前提下，保证了同一个事务多次读取同样的记录结果是一致的。可串行化:	可串行化是最高的隔离级别,它通过强制事务串行执行，避免了脏读，不可重复读，幻读的发生。实现原理就是在读取的每一行数据上进行加锁，这也就意味着会导致大量的超时和锁竞争问题。	四种隔离级别的安全性是从低 --&gt; 高的，相反的是并发性从 高 --&gt; 低。
+</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">什么是脏读、不可重复读、幻读</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">MVCC的实现原理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">如何保证没有幻读发生的</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">聚簇索引和非聚簇索引的区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">MyISAM和InnoDB引擎的区别及各自的优缺点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">常见的sql优化都有哪些点可以参考</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#8"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">如何进行大表的分页查询优化</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#9"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">一条查询sql的执行过程</span></a></li></ol></li></ol></div>
             
 
           </div>

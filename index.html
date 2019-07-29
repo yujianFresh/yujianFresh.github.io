@@ -418,12 +418,24 @@
                 
               
 
-              <time title="创建时间：2019-07-26 11:26:52 / 修改时间：11:29:12" itemprop="dateCreated datePublished" datetime="2019-07-26T11:26:52+08:00">2019-07-26</time>
+              <time title="创建时间：2019-07-26 11:26:52" itemprop="dateCreated datePublished" datetime="2019-07-26T11:26:52+08:00">2019-07-26</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-29 13:54:48" itemprop="dateModified" datetime="2019-07-29T13:54:48+08:00">2019-07-29</time>
               
             
           </span>
@@ -466,7 +478,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.8k</span>
+                <span title="本文字数">10k</span>
               
 
               
@@ -480,7 +492,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">5 分钟</span>
+                <span title="阅读时长">9 分钟</span>
               
             </div>
           
@@ -501,13 +513,17 @@
 
       
         
-          <h3 id="知识列表"><a href="#知识列表" class="headerlink" title="知识列表"></a>知识列表</h3><ul>
-<li><p>mysql的隔离级别有哪几种?分别有什么优缺点</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql共有四种事务隔离级别，分别是未提交读(READ UNCOMMITTED)、已提交读(READ COMMITTED)、可重复读(REPEATABLE READ)、可串行化(SERIALIZABLE),mysql的默认事务隔离级别是可重复读。</span><br><span class="line"></span><br><span class="line">未提交读:</span><br><span class="line">	一个事务中做的内容修改,即使没有进行事务提交,对其他事务也是可见的。这个级别会造成脏读，不可重复读,幻读。</span><br><span class="line">已提交读:</span><br><span class="line">	一个事务开始时，只能&quot;看到&quot;在事务开始之前的已经提交的事务所做的修改。也就是说，在这个隔离级别下，一个事务从开始到结束之间所做的修改，对其他事务是不可见的。这个级别会造成不可重复读，幻读。</span><br><span class="line">可重复读:</span><br><span class="line">	可重复读，在已提交读的前提下，保证了同一个事务多次读取同样的记录结果是一致的。</span><br><span class="line">可串行化:</span><br><span class="line">	可串行化是最高的隔离级别,它通过强制事务串行执行，避免了脏读，不可重复读，幻读的发生。实现原理就是在读取的每一行数据上进行加锁，这也就意味着会导致大量的超时和锁竞争问题。</span><br><span class="line">	</span><br><span class="line">四种隔离级别的安全性是从低 --&gt; 高的，相反的是并发性从 高 --&gt; 低。</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
+          <h3 id="知识列表"><a href="#知识列表" class="headerlink" title="知识列表"></a>知识列表</h3><ol>
+<li><a href="#2">mysql的隔离级别有哪几种</a></li>
+<li><a href="#2">什么是脏读、不可重复读、幻读</a></li>
+<li><a href="#3">MVCC的实现原理</a></li>
+<li><a href="#4">如何保证没有幻读发生的</a></li>
+<li><a href="#5">聚簇索引和非聚簇索引的区别</a></li>
+<li><a href="#6">MyISAM和InnoDB引擎的区别及各自的优缺点</a></li>
+<li><a href="#7">常见的sql优化都有哪些点可以参考</a></li>
+<li><a href="#8">如何进行大表的分页查询优化</a></li>
+<li><a href="#9">一条查询sql的执行过程</a></li>
+</ol>
           <!--noindex-->
           
             <div class="post-button text-center">
